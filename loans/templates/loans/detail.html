@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+	{{ loans.title }}
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ loans.title }}</h1>
+	<img src="{{ loans.image.url }}" height="60" alt="{{ loans.title }}">
+	<h2>
+		<a href="{{ loans.url }}">
+			{{ loans.title }}
+		</a>
+	</h2>
+	<p>
+		{{ loans.date }}
+	</p>
+{% endblock %}

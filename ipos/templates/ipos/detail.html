@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+	{{ ipos.title }}
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ ipos.title }}</h1>
+	<img src="{{ ipos.image.url }}" height="60" alt="{{ ipos.title }}">
+	<h2>
+		<a href="{{ ipos.url }}">
+			{{ ipos.title }}
+		</a>
+	</h2>
+	<p>
+		{{ ipos.date }}
+	</p>
+{% endblock %}

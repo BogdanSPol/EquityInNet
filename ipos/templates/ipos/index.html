@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	IPOs
+{% endblock %}
+
+
+{% block content %}
+
+	<h1>In base {{ ipo_projects.count }} actual IPOs investment opportunitie{{ ipo_projects.count|pluralize }}</h1>
+
+	Table
+{% endblock %}

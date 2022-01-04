@@ -1,0 +1,37 @@
+{% load static %}
+{% block topstatwiget %}
+
+	<div class="topstatwidget d-none d-lg-block">
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<!-- Statistic's widget -->
+				<ul class="nav align-content-center">
+					<li class="me-4">Projects: <span class="res">{{  equity_projects.count  }}124054545</span></li>
+					<li class="me-4">Brokers: <span class="res">{{  equity_projects.count  }}415</span></li>
+					<li class="me-4">Users: <span class="res">{{  equity_projects.count  }}2155263</span></li>
+					<li class="me-4">Invested: <span class="res"><span class="bi bi-currency-euro"></span>{{  equity_projects.count  }}150654548</span></li>
+					<!-- Search Bar -->
+					<li>
+						<form>
+							<input type="search" class="searchbar-form" placeholder="Search..." aria-label="Search">
+						</form>
+					</li>
+				</ul>
+				<!-- Language choice -->
+				<div class="dropdown">
+					<button type="button" class="btn btn-lang" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span> English </span>
+						<i class="bi bi-chevron-down"></i>
+					</button>
+					<div class="dropdown-menu dropdown-menu-end text-center">
+						<a class="dropdown-item" data-lang="en"> <span class="align-middle">English</span> </a>
+						<a class="dropdown-item" data-lang="sp"> <span class="align-middle">Spanish</span> </a>
+						<a class="dropdown-item" data-lang="gr"> <span class="align-middle">German</span> </a>
+						<a class="dropdown-item" data-lang="it"> <span class="align-middle">Italian</span> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock topstatwiget %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Equities
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+
+        <!-- Table navbar -->
+        <div class="d-flex d-inline flex-wrap align-items-center justify-content-between pb-2">
+
+            <!-- Watchlist & Portfolio -->
+            <div class="text-small">
+                <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
+                    <a href="{% url 'index' %}" style="text-decoration: none">
+                        <i class="bi bi-star color-yellow d-inline-block"></i>
+                        Watchlist
+                    </a>
+                </button>
+				<button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
+                    <a href="{% url 'index' %}" style="text-decoration: none">
+                        <i class="bi bi-briefcase color-yellow d-inline-block"></i>
+                        Portfolio
+                    </a>
+                </button>
+            </div>
+
+            <!-- Show rows & Filters -->
+            <div class="text-small">
+                <span>Show rows: </span>
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>25</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end text-center">
+                        <a class="dropdown-item"> <span class="align-middle">25</span> </a>
+						<a class="dropdown-item"> <span class="align-middle">50</span> </a>
+                    </div>
+                </div>
+
+
+                <a class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="collapse" href="#equitiesFilter" role="button" aria-expanded="false" aria-controls="equitiesFilter">
+                    <i class="bi bi-filter color-yellow d-inline-block"></i>
+                    Filters
+                    <i class="bi bi-chevron-down d-inline-block"></i>
+                </a>
+            </div>
+
+            <div class="collapse pt-2" id="equitiesFilter">
+                <div class="filter-card">
+                    <div>
+                        Currencies:
+                        {% for project in equity_projects %}
+                            {% for currency in project.currencies_set %}
+                                <div class="d-inline-block form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="currencyCheckbox{{ currency }}" value="{{ currency }}">
+                                    <label class="form-check-label" for="currencyCheckbox{{ currency }}">{{ currency }}</label>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                    </div>
+                    Filters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will here
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th colspan="3">Project title</th>
+						<th style="text-align:center">Min investment amount</th>
+						<th style="text-align:center">Pre-money valuation</th>
+						<th style="text-align:center">Round</th>
+						<th style="text-align:center">Days to go</th>
+						<th style="text-align:center">Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for project in equity_projects %}
+						<tr>
+							{% if project.status == 'ACTIVE' %}
+								<td>
+									<i class="bi bi-star color-yellow"></i>
+								</td>
+								<td>
+									<div class="table-pic-block">
+											<img src="{{  project.image.url }}" alt="">
+									</div>
+								</td>
+								<td>
+									<a href="{% url 'equities:detail' project.slug %}" class="grey-link">
+										<div class="text-large"> {{ project.title }} </div>
+									</a>
+									<span class="app-pill mt-2">Sector: {{ project.get_sector_display }}</span>
+								</td>
+								<td style="text-align:center">{{ project.min_amount }}</td>
+								<td style="text-align:center">{{ project.pre_money_val }}</td>
+								<td style="text-align:center">
+                                    <div class="justify-content-center">
+                                        <div> {{ project.round_raised }}</div>
+                                        <div class="progress mt-2" style="height: 18px">
+                                            <div class="progress-bar bg-app-blue"
+                                                role="progressbar" style="width: {{ project.raised_percent }}">
+                                                {{ project.raised_percent }}
+                                            </div>
+                                        </div>
+                                    </div>
+								</td>
+								<td style="text-align:center">
+									<div class="text-large">
+										{{ project.days_to_go.days}}
+									</div>
+								</td>
+								<td style="text-align:center">
+									<div class="text-large">
+										{{ project.score }}
+									</div>
+								</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock content %}

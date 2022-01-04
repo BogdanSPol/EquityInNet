@@ -1,0 +1,20 @@
+{% load static %}
+{% block carousel %}
+	<div class="cp_carousel">
+		<div class=" container d-none d-lg-block">
+			<div id="carousel-1" class="owl-carousel owl-theme">
+				{% for ads in carousel_ads %}
+					<div class="carousel-block">
+						<a href="{{ ads.url }}" class="nav-link">
+							<div class="carousel-pic-block">
+								<img src="{{ ads.image.url }}" alt="">
+							</div>
+							<span class="chapter">{{ ads.chapter}}</span><br>
+							<span class="title">{{ ads.title}}</span>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock carousel %}

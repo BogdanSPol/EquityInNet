@@ -1,0 +1,79 @@
+{% load static %}
+{% block header %}
+
+	<div class="toptab">
+		<div class="container d-flex flex-wrap align-items-center justify-content-between">
+
+			<!-- Main logo -->
+			<a href="{% url 'index' %}" class="navbar-brand">
+				<span class="bi" role="img" aria-label="EquityInNetLogo-full">
+					<img src="{% static 'images/bluelogo.png' %}" alt="" height="30">
+				</span>
+			</a>
+
+            <!-- Navbar -->
+			<nav class="navbar navbar-expand-lg d-flex flex-wrap">
+
+				<button class="navbar-toggler btn navbar-light border-app-blue" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class=" navbar-toggler-icon "></span>
+				</button>
+				<div class=" collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav">
+						<li><hr class="dropdown-divider"></li>
+						<li class="nav-item me-3">
+							<a href="{% url 'equities:equities_index' %}" class="nav-link active link-dark" aria-current="page">
+								<i class="bi bi-pie-chart me-2"></i>
+								Equities
+							</a>
+						</li>
+
+						<li class="nav-item me-3">
+							<a href="{% url 'icos:icos_index' %}" class="nav-link  link-dark">
+								<i class="bi bi-currency-bitcoin me-2"></i>
+								ICOs
+							</a>
+						</li>
+
+						<li class="nav-item me-3">
+							<a href="{% url 'ipos:ipos_index' %}" class="nav-link link-dark">
+								<i class="bi bi-bank me-2"></i>
+								IPOs
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="{% url 'loans:loans_index' %}" class="nav-link link-dark">
+								<i class="bi bi-percent me-2"></i>
+								Loans
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<!-- User's menu -->
+			<div class="d-none d-lg-block text-end">
+				{% if user.is_authenticated %}
+					<div class="dropdown">
+						<button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img class="rounded-circle header-profile-user" src="{% static 'images/users/user.jpg' %}" alt="">
+							<span class="color-blue"> {{ user.username }} </span>
+							<i class="bi bi-chevron-down color-blue"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-end text-center">
+							<a class="dropdown-item" href="#"> <span class="align-middle">Change password</span> </a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item text-danger" href="#"> <span class="align-middle">Logout</span> </a>
+						</div>
+					</div>
+
+				{% else %}
+					<div>
+						<button type="button" class="btn btn-login pe-3 ps-3 me-3">Log In</button>
+						<button type="button" class="btn btn-primary pe-3 ps-3">Sign up</button>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock header %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+	{{ equities.title }}
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ equities.title }}</h1>
+	<img src="{{ equities.image.url }}" height="60" alt="{{ equities.title }}">
+	<h2>
+		<a href="{{ equities.url }}">
+			{{ equities.title }}
+		</a>
+	</h2>
+	<p>
+		{{ equities.type_of_investment }}
+		{{ equities.days_to_go }}
+		{{ equities.invested }}
+		{{ equities.min_round }}
+		{{ equities.max_round }}
+		{{ equities.pre_money_valuation }}
+		{{ equities.min_investment_amount }}
+		{{ equities.sector }}
+		{{ equities.industry }}
+		{{ equities.date }}
+	</p>
+{% endblock %}

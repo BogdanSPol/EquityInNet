@@ -1,0 +1,111 @@
+{% load static %}
+{% block carousel %}
+{% comment %}
+	<h1>In base {{ carousel_ads.count }} actual ad{{ carousel_ads.count|pluralize }}</h1>
+	<div class=" container d-none d-lg-block">
+		<div id="carousel-1" class="owl-carousel owl-theme">
+			{% for ads in carousel_ads %}
+				{% if ads.status == 'ACTIVE' %}
+					<div class="carousel-block">
+						<a href="{{ ads.url }}" class="nav-link">
+							<div class="carousel-pic-block">
+								<img src="{{ ads.image.url }}" alt="">
+							</div>
+							<span class="chapter">{{ ads.chapter}}</span><br>
+							<span class="title">{{ ads.title}}</span>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{% endcomment %}
+	<div class=" container d-none d-lg-block">
+		<div id="carousel-1" class="owl-carousel owl-theme">
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/1.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 1</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/2.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 2</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+			<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/3.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 3</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/4.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 4</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/5.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 5</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/6.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 6</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/7.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 7</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/8.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 8</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+			<div class="carousel-block">
+				<a href="{% url 'index' %}" class="nav-link">
+					<div class="carousel-pic-block">
+						<img src="{% static 'images/picfortests/9.jpg' %}" alt="">
+					</div>
+					<span class="chapter">Picture 9</span><br>
+					<span class="title">Best auto in the world</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock carousel %}

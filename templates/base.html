@@ -1,0 +1,107 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Investment opportunities' aggregator" name="description" />
+    <meta content="BoTeam" name="author" />
+
+	<!-- Page title -->
+	<title>{% block title %}{% endblock title %} | EquityInNet - online investment opportunities' aggregator</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+	<link href="{% static 'libs/bootstrap-icons/bootstrap-icons.css' %}" id="bootstrap-icons-style" rel="stylesheet" type="text/css" />
+	<!-- App CSS -->
+	<link href="{% static 'css/app.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+	<!-- OwlCarousel CSS -->
+	<link href="{% static 'libs/owlcarousel/owl.carousel.min.css' %}" id="owl-style" rel="stylesheet" type="text/css" />
+	<link href="{% static 'libs/owlcarousel/owl.theme.default.min.css' %}" id="owl-theme-style" rel="stylesheet" type="text/css" />
+	<!-- Animate CSS -->
+	<link href="{% static 'libs/animate.css/animate.min.css' %}" id="owl-style" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+	{% block topstatwidget %}
+		{% include 'topstatwidget.html' %}
+	{% endblock topstatwidget %}
+
+	{% block header %}
+		{% include 'header.html' %}
+	{% endblock header %}
+
+	<div class="block-divider"></div>
+
+	{% block carousel %}
+		{% include 'carousel.html' %}
+	{% endblock carousel %}
+
+	<div class="block-divider"></div>
+
+	{% block content %}
+	{% endblock content %}
+{% comment %}
+<body data-topbar="dark" data-layout="horizontal">
+
+<body {% block extra_body %}{% endblock extra_body %}>
+    {% block preloader %}
+    {% endblock preloader %}
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        {% block header %}
+            {% include 'header.html' %}
+        {% endblock header %}
+
+        {% block sidebar %}
+            {% include 'sidebar.html' %}
+        {% endblock sidebar %}
+
+        {% block content %}
+        {% endblock content %}
+
+		{% comment %}
+        {% block footer %}
+            {% include 'partials/footer.html' %}
+        {% endblock footer %}
+
+        <!-- end main content-->
+
+    <!-- END layout-wrapper -->
+	</div>
+		{% comment %}
+        {% block rightsidebar %}
+            {% include 'partials/rightsidebar.html' %}
+        {% endblock rightsidebar %}
+
+    {% block javascript %}
+    <!-- JAVASCRIPT -->
+    	<script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		{% comment %}
+			<script src="{% static 'libs/bootstrap/js/bootstrap.js' %}"></script>
+			<script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
+			<script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+			<script src="{% static 'libs/metismenu/dist/metisMenu.min.js' %}"></script>
+    		<script src="{% static 'libs/node-waves/dist/waves.min.js' %}"></script>
+			<script src="{% static 'js/app.js' %}"></script>
+    		<script src="{% static 'libs/node-waves/dist/waves.min.js' %}"></script>
+    	{% block extra_javascript %}
+    	{% endblock extra_javascript %}
+    {% endblock javascript %}
+    {% endcomment %}
+
+	<!-- JavaScript -->
+	<script src="{% static 'libs/jquery/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'libs/owlcarousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js/app.js' %}"></script>
+</body>

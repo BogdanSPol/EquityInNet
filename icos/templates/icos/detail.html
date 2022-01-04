@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+	{{ icos.proj_name }}
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ icos.proj_name }}</h1>
+	<img src="{{ icos.image.url }}" height="60" alt="{{ icos.proj_name }}">
+	<h2>
+		<a href="{{ icos.tokensale_url }}">
+			{{ icos.proj_name }}
+		</a>
+	</h2>
+	<p>
+		{{ icos.date }}
+	</p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+	{{ ads.title }}
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ ads.title }}</h1>
+	<img src="{{ ads.image.url }}" height="60" alt="{{ ads.title }}">
+	<h2>
+		<a href="{{ ads.url }}">
+			{{ ads.title }}
+		</a>
+	</h2>
+	<p>
+		{{ ads.date_to_go }}
+		{{ ads.chapter }}
+		{{ ads.status }}
+		{{ ads.date }}
+	</p>
+{% endblock %}
