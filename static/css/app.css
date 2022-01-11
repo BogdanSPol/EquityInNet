@@ -6,7 +6,7 @@
   --app-blue: #3561fb;
   --app-white: #fefefe;
   --app-black: #212529;
-  --apt-yellow: #ff8c00;
+  --app-yellow: #ff8c00;
   --text-small: 85%;
   --text-large: 125%;
 }
@@ -32,6 +32,10 @@
   font-weight: bold;
 }
 
+.martop--1 {
+  margin-top: -.1rem;
+}
+
 .color-blue {
   font-size: inherit;
   color: var(--app-blue)
@@ -39,7 +43,12 @@
 
 .color-yellow {
   font-size: inherit;
-  color: var(--apt-yellow)
+  color: var(--app-yellow)
+}
+
+.color-white {
+  font-size: inherit;
+  color: var(--app-white)
 }
 
 .bg-app-blue {
@@ -73,6 +82,10 @@
   height: 2rem;
 }
 
+.res {
+  color: var(--app-blue);
+}
+
 
 /* TopStatWidget */
 .topstatwidget {
@@ -84,10 +97,6 @@
   position: relative;
   background-color: var(--app-white);
   border-bottom: 1px solid var(--app-grey);
-}
-
-.topstatwidget .res {
-  color: var(--app-blue);
 }
 
 .searchbar-form {
@@ -201,6 +210,8 @@
   align-content: start;
 }
 
+
+
 /* Table */
 
 th {
@@ -253,4 +264,60 @@ td {
   border-radius:.25rem;
   flex:1 1 auto;
   padding:1rem 1rem;
+}
+
+.progress-bar {
+  text-align:end !important;
+}
+
+.tablefooter {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: Inter, Roboto, sans-serif;
+  color: var(--app-dark-grey);
+  padding: 0.3rem 0 0.3rem 0 !important;
+  position: relative;
+  background-color: var(--app-white);
+  border-bottom: 1px solid var(--app-grey);
+}
+
+.btn-number {
+  background: var(--app-light-grey);
+  border: 0;
+  border-radius: 0.25rem;
+}
+
+.custom-select {
+  display: inline-block;
+  width: 4rem;
+  font-weight:inherit;
+  color: var(--app-blue) !important;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor:pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  background-color: var(--app-light-grey);
+  background-clip: padding-box;
+  padding:.425rem .5rem;
+  font-size: inherit;
+  border-radius:.25rem;
+  border: 0;
+  outline: 0;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.custom-select:hover {
+  border-radius:.25rem;
+  background-color: var(--app-light-grey);
+}
+
+.custom-select:focus {
+  box-shadow: none !important;
+  border: none;
+  outline: 0;
+  background-color: var(--app-light-grey) !important;
 }

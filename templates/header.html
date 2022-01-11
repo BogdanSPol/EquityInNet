@@ -6,8 +6,8 @@
 
 			<!-- Main logo -->
 			<a href="{% url 'index' %}" class="navbar-brand">
-				<span class="bi" role="img" aria-label="EquityInNetLogo-full">
-					<img src="{% static 'images/bluelogo.png' %}" alt="" height="30">
+				<span role="img" aria-label="EquityInNetLogo-full">
+					<img src="{% static 'images/bluelogo-beta.svg' %}" alt="" height="30">
 				</span>
 			</a>
 
@@ -28,25 +28,40 @@
 						</li>
 
 						<li class="nav-item me-3">
-							<a href="{% url 'icos:icos_index' %}" class="nav-link  link-dark">
+							<a href="{% url 'icos:icos_index' %}" class="nav-link  link-dark disabled">
 								<i class="bi bi-currency-bitcoin me-2"></i>
 								ICOs
 							</a>
 						</li>
 
 						<li class="nav-item me-3">
-							<a href="{% url 'ipos:ipos_index' %}" class="nav-link link-dark">
+							<a href="{% url 'ipos:ipos_index' %}" class="nav-link link-dark disabled">
 								<i class="bi bi-bank me-2"></i>
 								IPOs
 							</a>
 						</li>
 
-						<li class="nav-item">
-							<a href="{% url 'loans:loans_index' %}" class="nav-link link-dark">
+						<li class="nav-item me-3">
+							<a href="{% url 'loans:loans_index' %}" class="nav-link link-dark disabled">
 								<i class="bi bi-percent me-2"></i>
 								Loans
 							</a>
 						</li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link link-dark disabled"
+                               id="navbarDropdownRating" role="button" data-bs-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+								<i class="bi bi-award me-2"></i>
+								Ratings
+                                <i class="bi bi-chevron-down"></i>
+							</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownRating">
+                                <li><a class="dropdown-item" style="text-align: end" href="#">IPO broker's</a></li>
+                                <li><a class="dropdown-item" style="text-align: end" href="#">ICO platform's</a></li>
+                                <li><a class="dropdown-item" style="text-align: end" href="#">Fundraising platform's</a></li>
+                            </ul>
+                        </li>
 					</ul>
 				</div>
 			</nav>
@@ -61,17 +76,45 @@
 							<i class="bi bi-chevron-down color-blue"></i>
 						</button>
 						<div class="dropdown-menu dropdown-menu-end text-center">
-							<a class="dropdown-item" href="#"> <span class="align-middle">Change password</span> </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-star color-yellow d-inline-block"></i>
+                                <span class="align-middle ps-2">Watchlist</span>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-briefcase color-yellow d-inline-block"></i>
+                                <span class="align-middle ps-2">Portfolio</span>
+                            </a>
+							<a class="dropdown-item" href="#">
+                                <i class="bi bi-arrow-repeat  color-yellow d-inline-block"></i>
+                                <span class="align-middle ps-2">Change password</span>
+                            </a>
+
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item text-danger" href="#"> <span class="align-middle">Logout</span> </a>
+                            <form class="dropdown-item" action="{% url 'logoutuser' %}" method="POST">
+                                {% csrf_token %}
+                                <i class="bi bi-door-open color-yellow d-inline-block"></i>
+                                <button type="submit" class="align-middle btn text-danger">Logout</button>
+                            </form>
 						</div>
 					</div>
 
 				{% else %}
+
 					<div>
-						<button type="button" class="btn btn-login pe-3 ps-3 me-3">Log In</button>
-						<button type="button" class="btn btn-primary pe-3 ps-3">Sign up</button>
+                        <div class="d-inline-block">
+                            <a href="{% url 'loginuser' %}">
+                                <button type="button" class="btn btn-login pe-3 ps-3 me-3" style="text-decoration: none">
+                                    Log In
+                                </button>
+                            </a>
+                        </div>
+                        <div class="d-inline-block">
+                            <a href="{% url 'signupuser' %}">
+                                <button type="button" class="btn btn-primary pe-3 ps-3" style="text-decoration: none">Sign up</button>
+                            </a>
+                        </div>
 					</div>
+
 				{% endif %}
 			</div>
 		</div>

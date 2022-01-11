@@ -1,3 +1,4 @@
+/* Carousel */
 $(function() {
   var owl = $(".owl-carousel");
   owl.owlCarousel({

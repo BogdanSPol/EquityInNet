@@ -13,12 +13,14 @@
 
             <!-- Watchlist & Portfolio -->
             <div class="text-small">
+                <!-- Watchlist -->
                 <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
                     <a href="{% url 'index' %}" style="text-decoration: none">
                         <i class="bi bi-star color-yellow d-inline-block"></i>
                         Watchlist
                     </a>
                 </button>
+                <!-- Portfolio -->
 				<button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
                     <a href="{% url 'index' %}" style="text-decoration: none">
                         <i class="bi bi-briefcase color-yellow d-inline-block"></i>
@@ -29,19 +31,35 @@
 
             <!-- Show rows & Filters -->
             <div class="text-small">
+
+                <!-- Show rows -->
                 <span>Show rows: </span>
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>25</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end text-center">
-                        <a class="dropdown-item"> <span class="align-middle">25</span> </a>
-						<a class="dropdown-item"> <span class="align-middle">50</span> </a>
-                    </div>
-                </div>
 
+                <form method="GET" class="d-inline-block">
+                    <label type="submit">
+                    {{ paginate_by }}
+                        <select name="paginate_by" id="" class="custom-select" onchange="this.form.submit()">
+                            <option value="3"
+                                    {% if paginate_by == 3|slugify %}
+                                        selected
+                                    {% endif %}>3</option>
+                            <option value="5"
+                                    {% if paginate_by == 5|slugify %}
+                                        selected
+                                    {% endif %}>5</option>
+                            <option value="10"
+                                    {% if paginate_by == 10|slugify %}
+                                        selected
+                                    {% endif %}>10</option>
+                            <option value="15"
+                                    {% if paginate_by == 15|slugify %}
+                                        selected
+                                    {% endif %}>15</option>
+                        </select>
+                    </label>
+                </form>
 
+                <!-- Filters -->
                 <a class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="collapse" href="#equitiesFilter" role="button" aria-expanded="false" aria-controls="equitiesFilter">
                     <i class="bi bi-filter color-yellow d-inline-block"></i>
                     Filters
@@ -63,26 +81,26 @@
                         {% endfor %}
 
                     </div>
-                    Filters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will here
+                    <span>Filters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will here</span>
                 </div>
             </div>
         </div>
 
         <!-- Table -->
 		<div class="table-responsive">
-			<table class="table">
+			<table class="table" id="Equities_Table">
 				<thead>
 					<tr>
 						<th colspan="3">Project title</th>
-						<th style="text-align:center">Min investment amount</th>
-						<th style="text-align:center">Pre-money valuation</th>
-						<th style="text-align:center">Round</th>
-						<th style="text-align:center">Days to go</th>
-						<th style="text-align:center">Score</th>
+						<th style="text-align:end">Min invest</th>
+						<th style="text-align:end" class="pe-5">Pre-money</th>
+						<th style="text-align:end">Round</th>
+						<th style="text-align:end">Days to go</th>
+						<th style="text-align:end">Score</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for project in equity_projects %}
+					{% for project in page_obj %}
 						<tr>
 							{% if project.status == 'ACTIVE' %}
 								<td>
@@ -97,14 +115,14 @@
 									<a href="{% url 'equities:detail' project.slug %}" class="grey-link">
 										<div class="text-large"> {{ project.title }} </div>
 									</a>
-									<span class="app-pill mt-2">Sector: {{ project.get_sector_display }}</span>
+									<span class="app-pill">{{ project.get_sector_display }}</span>
 								</td>
-								<td style="text-align:center">{{ project.min_amount }}</td>
-								<td style="text-align:center">{{ project.pre_money_val }}</td>
-								<td style="text-align:center">
-                                    <div class="justify-content-center">
+								<td style="text-align:end">{{ project.min_amount }}</td>
+								<td style="text-align:end" class="pe-5">{{ project.pre_money_val }}</td>
+								<td style="text-align:end">
+                                    <div>
                                         <div> {{ project.round_raised }}</div>
-                                        <div class="progress mt-2" style="height: 18px">
+                                        <div class="progress martop--1" style="height: 18px">
                                             <div class="progress-bar bg-app-blue"
                                                 role="progressbar" style="width: {{ project.raised_percent }}">
                                                 {{ project.raised_percent }}
@@ -112,12 +130,12 @@
                                         </div>
                                     </div>
 								</td>
-								<td style="text-align:center">
+								<td style="text-align:end">
 									<div class="text-large">
 										{{ project.days_to_go.days}}
 									</div>
 								</td>
-								<td style="text-align:center">
+								<td style="text-align:end">
 									<div class="text-large">
 										{{ project.score }}
 									</div>
@@ -128,6 +146,53 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
 
+        <!-- Table footer -->
+        <div class="tablefooter">
+            <div class="d-flex d-inline flex-wrap justify-content-between pb-2">
+                <ul class="nav" style="padding:.375rem .75rem">
+                    <li>
+                        Showing
+                        <span class="res">{{  page_obj.start_index  }}</span>
+                        to
+                        <span class="res">{{  page_obj.end_index  }}</span>
+                        of
+                        <span class="res">{{  page_obj.paginator.count  }}</span>
+                        entries
+                    </li>
+                </ul>
+                <!-- Paginator -->
+                <form method="GET" href="#paginate_by">
+                    <nav aria-label="Equities_Paginator">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                {% if page_obj.has_previous %}
+                                    <a href="?page={{ page_obj.previous_page_number }}"
+                                       class="page-link btn-login">Previous</a>
+                                {% endif %}
+                            </li>
+                            {% for p in page_obj.paginator.page_range %}
+                                {% if page_obj.number == p %}
+                                <li class="page-item">
+                                    <a href="?page={{ page_obj.number }}" class="page-link btn-number">
+                                    {{ page_obj.number }}
+                                    </a>
+                                </li>
+                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                <li class="page-item">
+                                    <a href="?page={{ p }}" class="page-link btn-login">{{ p }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                            <li class="page-item">
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-login">Next</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </nav>
+                </form>
+            </div>
+        </div>
+	</div>
 {% endblock content %}

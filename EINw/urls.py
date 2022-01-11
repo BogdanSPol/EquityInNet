@@ -22,6 +22,15 @@ from EINw import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
+
+    # Users
+    path('signup/', views.signupuser, name='signupuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
+    path('login/', views.loginuser, name='loginuser'),
+    path('portfolio/', views.userportfolio, name='userportfolio'),
+    path('favorite/', views.userfavorite, name='userfavorite'),
+
+    # Projects
     path('equities/', include('equities.urls')),
     path('icos/', include('icos.urls')),
     path('ipos/', include('ipos.urls')),
