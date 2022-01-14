@@ -6,193 +6,89 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container">
+    <div class="container">
 
-        <!-- Table navbar -->
-        <div class="d-flex d-inline flex-wrap align-items-center justify-content-between pb-2">
-
-            <!-- Watchlist & Portfolio -->
-            <div class="text-small">
-                <!-- Watchlist -->
-                <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
-                    <a href="{% url 'index' %}" style="text-decoration: none">
-                        <i class="bi bi-star color-yellow d-inline-block"></i>
-                        Watchlist
-                    </a>
-                </button>
-                <!-- Portfolio -->
-				<button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
-                    <a href="{% url 'index' %}" style="text-decoration: none">
-                        <i class="bi bi-briefcase color-yellow d-inline-block"></i>
-                        Portfolio
-                    </a>
-                </button>
-            </div>
-
-            <!-- Show rows & Filters -->
-            <div class="text-small">
-
-                <!-- Show rows -->
-                <span>Show rows: </span>
-
-                <form method="GET" class="d-inline-block">
-                    <label type="submit">
-                    {{ paginate_by }}
-                        <select name="paginate_by" id="" class="custom-select" onchange="this.form.submit()">
-                            <option value="3"
-                                    {% if paginate_by == 3|slugify %}
-                                        selected
-                                    {% endif %}>3</option>
-                            <option value="5"
-                                    {% if paginate_by == 5|slugify %}
-                                        selected
-                                    {% endif %}>5</option>
-                            <option value="10"
-                                    {% if paginate_by == 10|slugify %}
-                                        selected
-                                    {% endif %}>10</option>
-                            <option value="15"
-                                    {% if paginate_by == 15|slugify %}
-                                        selected
-                                    {% endif %}>15</option>
-                        </select>
-                    </label>
-                </form>
-
-                <!-- Filters -->
-                <a class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="collapse" href="#equitiesFilter" role="button" aria-expanded="false" aria-controls="equitiesFilter">
-                    <i class="bi bi-filter color-yellow d-inline-block"></i>
-                    Filters
-                    <i class="bi bi-chevron-down d-inline-block"></i>
-                </a>
-            </div>
-
-            <div class="collapse pt-2" id="equitiesFilter">
-                <div class="filter-card">
-                    <div>
-                        Currencies:
-                        {% for project in equity_projects %}
-                            {% for currency in project.currencies_set %}
-                                <div class="d-inline-block form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="currencyCheckbox{{ currency }}" value="{{ currency }}">
-                                    <label class="form-check-label" for="currencyCheckbox{{ currency }}">{{ currency }}</label>
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-
-                    </div>
-                    <span>Filters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will hereFilters will here</span>
-                </div>
-            </div>
+        <!-- Tablenavbar -->
+        <div class="row">
+            {% block tablenavbar %}
+                {% include 'tablenav/tablenavbar.html' %}
+            {% endblock tablenavbar %}
         </div>
+
+         <!-- Filter's block for filters from tablenavbar -->
+        <div class="row">
+            {% block filtersform %}
+                {% include 'equities/filtersform.html' %}
+            {% endblock filtersform %}
+        </div>
+
 
         <!-- Table -->
-		<div class="table-responsive">
-			<table class="table" id="Equities_Table">
-				<thead>
-					<tr>
-						<th colspan="3">Project title</th>
-						<th style="text-align:end">Min invest</th>
-						<th style="text-align:end" class="pe-5">Pre-money</th>
-						<th style="text-align:end">Round</th>
-						<th style="text-align:end">Days to go</th>
-						<th style="text-align:end">Score</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for project in page_obj %}
-						<tr>
-							{% if project.status == 'ACTIVE' %}
-								<td>
-									<i class="bi bi-star color-yellow"></i>
-								</td>
-								<td>
-									<div class="table-pic-block">
-											<img src="{{  project.image.url }}" alt="">
-									</div>
-								</td>
-								<td>
-									<a href="{% url 'equities:detail' project.slug %}" class="grey-link">
-										<div class="text-large"> {{ project.title }} </div>
-									</a>
-									<span class="app-pill">{{ project.get_sector_display }}</span>
-								</td>
-								<td style="text-align:end">{{ project.min_amount }}</td>
-								<td style="text-align:end" class="pe-5">{{ project.pre_money_val }}</td>
-								<td style="text-align:end">
-                                    <div>
-                                        <div> {{ project.round_raised }}</div>
-                                        <div class="progress martop--1" style="height: 18px">
-                                            <div class="progress-bar bg-app-blue"
-                                                role="progressbar" style="width: {{ project.raised_percent }}">
-                                                {{ project.raised_percent }}
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover" id="Equities_Table">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Project title</th>
+                            <th style="text-align:end">Min invest</th>
+                            <th style="text-align:end" class="pe-5">Pre-money</th>
+                            <th style="text-align:end">Round</th>
+                            <th style="text-align:end">Days to go</th>
+                            <th style="text-align:end">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in page_obj %}
+                            <tr>
+                                {% if project.status == 'ACTIVE' %}
+                                    <td>
+                                        <i class="bi bi-star color-yellow"></i>
+                                    </td>
+                                    <td>
+                                        <div class="table-pic-block">
+                                                <img src="{{  project.image.url }}" alt="">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'equities:detail' project.slug %}" class="grey-link">
+                                            <div class="text-large"> {{ project.title }} </div>
+                                        </a>
+                                        <span class="app-pill">{{ project.sector_choice }}</span>
+                                    </td>
+                                    <td style="text-align:end">{{ project.min_amount }}</td>
+                                    <td style="text-align:end" class="pe-5">{{ project.pre_money_val }}</td>
+                                    <td style="text-align:end">
+                                        <div>
+                                            <div> {{ project.round_raised }}</div>
+                                            <div class="progress martop--1" style="height: 18px">
+                                                <div class="progress-bar bg-app-blue"
+                                                    role="progressbar" style="width: {{ project.raised_percent }}">
+                                                    {{ project.raised_percent }}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-								</td>
-								<td style="text-align:end">
-									<div class="text-large">
-										{{ project.days_to_go.days}}
-									</div>
-								</td>
-								<td style="text-align:end">
-									<div class="text-large">
-										{{ project.score }}
-									</div>
-								</td>
-							{% endif %}
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-
-        <!-- Table footer -->
-        <div class="tablefooter">
-            <div class="d-flex d-inline flex-wrap justify-content-between pb-2">
-                <ul class="nav" style="padding:.375rem .75rem">
-                    <li>
-                        Showing
-                        <span class="res">{{  page_obj.start_index  }}</span>
-                        to
-                        <span class="res">{{  page_obj.end_index  }}</span>
-                        of
-                        <span class="res">{{  page_obj.paginator.count  }}</span>
-                        entries
-                    </li>
-                </ul>
-                <!-- Paginator -->
-                <form method="GET" href="#paginate_by">
-                    <nav aria-label="Equities_Paginator">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                {% if page_obj.has_previous %}
-                                    <a href="?page={{ page_obj.previous_page_number }}"
-                                       class="page-link btn-login">Previous</a>
+                                    </td>
+                                    <td style="text-align:end">
+                                        <div class="text-large">
+                                            {{ project.days_to_go.days}}
+                                        </div>
+                                    </td>
+                                    <td style="text-align:end">
+                                        <div class="text-large">
+                                            {{ project.score }}
+                                        </div>
+                                    </td>
                                 {% endif %}
-                            </li>
-                            {% for p in page_obj.paginator.page_range %}
-                                {% if page_obj.number == p %}
-                                <li class="page-item">
-                                    <a href="?page={{ page_obj.number }}" class="page-link btn-number">
-                                    {{ page_obj.number }}
-                                    </a>
-                                </li>
-                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                                <li class="page-item">
-                                    <a href="?page={{ p }}" class="page-link btn-login">{{ p }}</a>
-                                </li>
-                                {% endif %}
-                            {% endfor %}
-                            <li class="page-item">
-                                {% if page_obj.has_next %}
-                                    <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-login">Next</a>
-                                {% endif %}
-                            </li>
-                        </ul>
-                    </nav>
-                </form>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
+
+        <!-- Table footer -->
+        {% block tablefooter %}
+            {% include 'tablenav/tablefooter.html' %}
+        {% endblock tablefooter %}
 	</div>
 {% endblock content %}

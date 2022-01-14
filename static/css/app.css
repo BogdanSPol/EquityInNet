@@ -275,7 +275,6 @@ td {
   font-weight: 500;
   font-family: Inter, Roboto, sans-serif;
   color: var(--app-dark-grey);
-  padding: 0.3rem 0 0.3rem 0 !important;
   position: relative;
   background-color: var(--app-white);
   border-bottom: 1px solid var(--app-grey);
@@ -320,4 +319,33 @@ td {
   border: none;
   outline: 0;
   background-color: var(--app-light-grey) !important;
+}
+
+/* Range Slider */
+
+.numeric-slider .ui-draggable, .numeric-slider .ui-droppable {
+  background-position: top;
+}
+
+.numeric-slider .ui-widget-header {
+  background: #006fba;
+}
+
+.numeric-slider .value {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin: 0 0 0 -20px;
+  width: 40px;
+  text-align: center;
+  display: block;
+  font-weight: normal;
+}
+
+.numeric-slider {
+  text-align: center;
+}
+
+.numeric-slider-range-text {
+  text-align: center;
 }

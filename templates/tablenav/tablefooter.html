@@ -1,0 +1,48 @@
+{% load static %}
+{% load temptag %}
+
+{% block tablefooter %}
+    <div class="tablefooter">
+        <div class="d-flex justify-content-between">
+            <!-- Showing data -->
+            <span style="padding: .375rem .75rem">
+                Showing
+                <span class="res">{{  page_obj.start_index  }}</span>
+                to
+                <span class="res">{{  page_obj.end_index  }}</span>
+                of
+                <span class="res">{{  page_obj.paginator.count  }}</span>
+                entries
+            </span>
+            <!-- Paginator -->
+            <nav aria-label="Table_Paginator">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if page_obj.has_previous %}
+                            <a href="?{% url_replace page=page_obj.previous_page_number %}"
+                               class="page-link btn-login">Previous</a>
+                        {% endif %}
+                    </li>
+                    {% for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                        <li class="page-item">
+                            <a href="?{% url_replace page=page_obj.number %}" class="page-link btn-number">
+                            {{ page_obj.number }}
+                            </a>
+                        </li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <li class="page-item">
+                            <a href="?{% url_replace page=p %}" class="page-link btn-login">{{ p }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="page-item">
+                        {% if page_obj.has_next %}
+                            <a href="?{% url_replace page=page_obj.next_page_number %}" class="page-link btn-login">Next</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock tablefooter %}

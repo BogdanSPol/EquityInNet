@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import CarouselAds
+from .models import CarouselAd
 
-admin.site.register(CarouselAds)
+admin.site.register(CarouselAd)

@@ -6,7 +6,8 @@ from django.contrib.auth import login, logout, authenticate
 
 
 def index(request):
-    return render(request, 'index.html')
+#    return render(request, 'index.html')
+    return redirect('equities:equities_index')
 
 
 def signupuser(request):
