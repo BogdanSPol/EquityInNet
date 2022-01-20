@@ -16,3 +16,12 @@ class SectorChoice(models.Model):
 
     def __str__(self):
         return self.sector_name
+
+
+class Country(models.Model):
+    country_code = models.CharField(max_length=2, unique=True, null=True)
+    country_name = models.CharField(max_length=32)
+    country_flag = models.ImageField(upload_to='common/country_flags/',)
+
+    def __str__(self):
+        return self.country_code

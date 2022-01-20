@@ -9,6 +9,12 @@ class EquityProject(models.Model):
     image = models.ImageField(upload_to='equities/db/images/',)
     title = models.CharField(max_length=25,)
     url = models.URLField(blank=False, )
+    country = models.ForeignKey(
+        'common.Country',
+        to_field="country_code",
+        on_delete=models.DO_NOTHING,
+        null=True,
+    )
     end_date = models.DateField(
         blank=False,
         help_text="Day to go + date now",
@@ -102,11 +108,19 @@ class EquityProject(models.Model):
 
     @property
     def raised_percent(self):
-        return f'{((self.invested *10000) // self.round_money) / 100}%'
+        return ((self.invested *10000) // self.round_money) / 100
 
     @property
     def days_to_go(self):
         return self.end_date - date.today()
+
+    @property
+    def country_flag(self):
+        return self.country.country_flag.url
+
+    @property
+    def country_code(self):
+        return self.country_id
 
     def get_url(self):
         return reverse('detail', args=[self.slug])

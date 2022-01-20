@@ -1,0 +1,88 @@
+{% block eqtable %}
+    <thead>
+        <tr>
+            <th colspan="3">Project title</th>
+            <th style="text-align:end">Min invest</th>
+            <th style="text-align:end">Pre-money</th>
+            <th style="text-align:end">Round</th>
+            <th style="text-align:end">1d / 7d change</th>
+            <th style="text-align:end">Days to go</th>
+            <th style="text-align:end">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in page_obj %}
+            <tr>
+                {% if project.status == 'ACTIVE' %}
+                    <td>
+                        <i class="bi bi-star text-color-yellow"></i>
+                    </td>
+                    <td>
+                        <div class="table-pic-block">
+                                <img src="{{  project.image.url }}" alt="">
+                        </div>
+                    </td>
+                    <td>
+                        <a href="{% url 'equities:detail' project.slug %}" class="grey-link">
+                            <div class="text-norm"> {{ project.title }} </div>
+                        </a>
+                        <div class="martop--1">
+                            <span class="app-pill-sector">{{ project.sector_choice }}</span>
+                            <span class="app-pill-country align-items-center">
+                                <img src="{{ project.country_flag }}" alt="" >
+                                {{ project.country_code }}
+                            </span>
+                        </div>
+                    </td>
+                    <td style="text-align:end">{{ project.min_amount }}</td>
+                    <td style="text-align:end">{{ project.pre_money_val }}</td>
+                    <td style="text-align:end">
+                        <div>
+                            {% if project.raised_percent > 100 %}
+                                <span class="app-pill-overfunding">Overfunding</span>
+                            {% endif %}
+                            {{ project.raised_percent }} %
+                        </div>
+                        <div class="text-color-blue text-xsmall martop--1">
+                            {{ project.round_raised }}
+                        </div>
+                    </td>
+                    <td style="text-align:end">
+                        <div>
+                            <span class="text-color-green">+2.5%</span> / <span class="text-color-red">+8.0%</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <span class="align-self-center">
+                                {{ project.days_to_go.days}}
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <span class="align-self-center text-bold">
+                            {{ project.score }}
+                            </span>
+                            <div class="p-1 align-self-end">
+                                {% if project.score > 9 %}
+                                    <i class="bi bi-star-fill text-color-yellow"></i>
+                                {% elif project.score > 8 %}
+                                    <i class="bi bi-reception-4 text-color-green"></i>
+                                {% elif project.score > 7 %}
+                                    <i class="bi bi-reception-3 text-color-yellow"></i>
+                                {% elif project.score > 6 %}
+                                    <i class="bi bi-reception-2 text-color-red"></i>
+                                {% elif project.score > 5 %}
+                                    <i class="bi bi-reception-2 text-color-red"></i>
+                                {% else %}
+                                    <i class="bi bi-reception-0 text-color-blue"></i>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock eqtable %}

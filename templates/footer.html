@@ -1,0 +1,59 @@
+{% load static %}
+{% block footer %}
+
+    <footer class="border-top pt-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'index' %}" role="img" aria-label="EquityInNetLogo-full" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                        <img src="{% static 'images/bluelogo-beta.svg' %}" alt="" height="30">
+                    </a>
+                </div>
+
+                <div class="col-2">
+                  <h5>Opportunities</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="{% url 'equities:equities_index' %}" class="nav-link p-0 text-muted">Equity</a></li>
+                    <li class="nav-item mb-2"><a href="{% url 'ipos:ipos_index' %}" class="nav-link p-0 text-muted">IPO</a></li>
+                    <li class="nav-item mb-2"><a href="{% url 'icos:icos_index' %}" class="nav-link p-0 text-muted">ICO</a></li>
+                    <li class="nav-item mb-2"><a href="{% url 'loans:loans_index' %}" class="nav-link p-0 text-muted">Loan's</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Fund's</a></li>
+                  </ul>
+                </div>
+
+                <div class="col-2">
+                  <h5>Ratings</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">IPO broker's</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ICO platform's</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Raising platform's</a></li>
+                  </ul>
+                </div>
+
+                <div class="col-2">
+                  <h5>Other</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">What we do</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                  </ul>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-between pt-4 mt-4 border-top">
+                    <p class="text-muted">&copy; 2021-2022 EquityInNet, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3 bi bi-telegram"><a class="link-dark" href="#"></a></li>
+                        <li class="ms-3 bi bi-facebook"><a class="link-dark" href="#"></a></li>
+                        <li class="ms-3 bi bi-envelope-fill"><a class="link-dark" href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-end pb-4">
+                    <span class="text-color-dark-grey">Powered by &zwnj;</span><span class="text-color-blue d-inline-block">the10.team</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock footer %}

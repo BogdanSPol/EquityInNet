@@ -2,121 +2,156 @@
 {% block header %}
 
 	<div class="toptab">
-		<div class="container d-flex flex-wrap align-items-center justify-content-between">
+		<div class="container">
+            <div class="row">
 
-			<!-- Main logo -->
-			<a href="{% url 'index' %}" class="navbar-brand">
-				<span role="img" aria-label="EquityInNetLogo-full">
-					<img src="{% static 'images/bluelogo-beta.svg' %}" alt="" height="30">
-				</span>
-			</a>
+                <!-- Main logo -->
+                <div class="col-2" >
+                    <div class="my-3">
+                        <a href="{% url 'index' %}" role="img" aria-label="EquityInNetLogo-full">
+                            <img src="{% static 'images/bluelogo-beta.svg' %}" alt="" height="30">
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Navbar -->
-			<nav class="navbar navbar-expand-lg d-flex flex-wrap">
+                <!-- Navbar -->
+                <div class="col-8 align-self-center">
+                    <nav class="navbar navbar-expand-lg">
+                        <div id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown pe-3">
+                                    <a class="nav-link link-dark"
+                                       id="navbarDropdownOpportunities" role="button" data-bs-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        Opportunities
+                                        <i class="bi bi-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownOpportunities">
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'equities:equities_index' %}">
+                                                <i class="bi bi-pie-chart text-color-yellow me-2"></i>
+                                                Equity
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'ipos:ipos_index' %}">
+                                                <i class="bi-bank text-color-yellow me-2"></i>
+                                                IPO
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'icos:icos_index' %}">
+                                                <i class="bi bi-currency-bitcoin text-color-yellow me-2"></i>
+                                                ICO
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'loans:loans_index' %}">
+                                                <i class="bi bi-percent text-color-yellow me-2"></i>
+                                                Loan's
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-wallet text-color-yellow me-2"></i>
+                                                Fund's
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
-				<button class="navbar-toggler btn navbar-light border-app-blue" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class=" navbar-toggler-icon "></span>
-				</button>
-				<div class=" collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav">
-						<li><hr class="dropdown-divider"></li>
-						<li class="nav-item me-3">
-							<a href="{% url 'equities:equities_index' %}" class="nav-link active link-dark" aria-current="page">
-								<i class="bi bi-pie-chart me-2"></i>
-								Equities
-							</a>
-						</li>
-
-						<li class="nav-item me-3">
-							<a href="{% url 'icos:icos_index' %}" class="nav-link  link-dark disabled">
-								<i class="bi bi-currency-bitcoin me-2"></i>
-								ICOs
-							</a>
-						</li>
-
-						<li class="nav-item me-3">
-							<a href="{% url 'ipos:ipos_index' %}" class="nav-link link-dark disabled">
-								<i class="bi bi-bank me-2"></i>
-								IPOs
-							</a>
-						</li>
-
-						<li class="nav-item me-3">
-							<a href="{% url 'loans:loans_index' %}" class="nav-link link-dark disabled">
-								<i class="bi bi-percent me-2"></i>
-								Loans
-							</a>
-						</li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link link-dark disabled"
-                               id="navbarDropdownRating" role="button" data-bs-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-								<i class="bi bi-award me-2"></i>
-								Ratings
-                                <i class="bi bi-chevron-down"></i>
-							</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownRating">
-                                <li><a class="dropdown-item" style="text-align: end" href="#">IPO broker's</a></li>
-                                <li><a class="dropdown-item" style="text-align: end" href="#">ICO platform's</a></li>
-                                <li><a class="dropdown-item" style="text-align: end" href="#">Fundraising platform's</a></li>
+                                <li class="nav-item dropdown pe-3">
+                                    <a class="nav-link link-dark"
+                                       id="navbarDropdownRating" role="button" data-bs-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        Ratings
+                                        <i class="bi bi-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownRating">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-person text-color-yellow me-2"></i>
+                                                IPO broker's
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-coin text-color-yellow me-2"></i>
+                                                ICO platform's
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-cash-stack text-color-yellow me-2"></i>
+                                                Raising platform's
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pe-3">
+                                    <a href="#" class="nav-link  link-dark">
+                                        What we do
+                                    </a>
+                                </li>
                             </ul>
-                        </li>
-					</ul>
-				</div>
-			</nav>
+                        </div>
+                    </nav>
+                </div>
 
-			<!-- User's menu -->
-			<div class="d-none d-lg-block text-end">
-				{% if user.is_authenticated %}
-					<div class="dropdown">
-						<button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img class="rounded-circle header-profile-user" src="{% static 'images/users/user.jpg' %}" alt="">
-							<span class="color-blue"> {{ user.username }} </span>
-							<i class="bi bi-chevron-down color-blue"></i>
-						</button>
-						<div class="dropdown-menu dropdown-menu-end text-center">
-                            <a class="dropdown-item" href="#">
-                                <i class="bi bi-star color-yellow d-inline-block"></i>
-                                <span class="align-middle ps-2">Watchlist</span>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="bi bi-briefcase color-yellow d-inline-block"></i>
-                                <span class="align-middle ps-2">Portfolio</span>
-                            </a>
-							<a class="dropdown-item" href="#">
-                                <i class="bi bi-arrow-repeat  color-yellow d-inline-block"></i>
-                                <span class="align-middle ps-2">Change password</span>
-                            </a>
-
-							<div class="dropdown-divider"></div>
-                            <form class="dropdown-item" action="{% url 'logoutuser' %}" method="POST">
-                                {% csrf_token %}
-                                <i class="bi bi-door-open color-yellow d-inline-block"></i>
-                                <button type="submit" class="align-middle btn text-danger">Logout</button>
-                            </form>
-						</div>
-					</div>
-
-				{% else %}
-
-					<div>
-                        <div class="d-inline-block">
-                            <a href="{% url 'loginuser' %}">
-                                <button type="button" class="btn btn-login pe-3 ps-3 me-3" style="text-decoration: none">
-                                    Log In
+                <!-- User's menu -->
+                <div class="col-2 align-self-center">
+                    <div class="d-none d-lg-block text-end">
+                        {% if user.is_authenticated %}
+                            <div class="dropdown">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="rounded-circle header-profile-user" src="{% static 'images/users/user.jpg' %}" alt="">
+                                    <span class="text-color-blue"> {{ user.username }} </span>
+                                    <i class="bi bi-chevron-down text-color-blue"></i>
                                 </button>
-                            </a>
-                        </div>
-                        <div class="d-inline-block">
-                            <a href="{% url 'signupuser' %}">
-                                <button type="button" class="btn btn-primary pe-3 ps-3" style="text-decoration: none">Sign up</button>
-                            </a>
-                        </div>
-					</div>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-star text-color-yellow d-inline-block"></i>
+                                        <span class="align-middle ps-2">Watchlist</span>
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-briefcase text-color-yellow d-inline-block"></i>
+                                        <span class="align-middle ps-2">Portfolio</span>
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-arrow-repeat  text-color-yellow d-inline-block"></i>
+                                        <span class="align-middle ps-2">Change password</span>
+                                    </a>
 
-				{% endif %}
-			</div>
+                                    <div class="dropdown-divider"></div>
+                                    <form class="dropdown-item" action="{% url 'logoutuser' %}" method="POST">
+                                        {% csrf_token %}
+                                        <i class="bi bi-door-open text-color-yellow d-inline-block"></i>
+                                        <button type="submit" class="align-middle btn text-danger">Logout</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        {% else %}
+
+                            <div>
+                                <div class="d-inline-block">
+                                    <a href="{% url 'loginuser' %}">
+                                        <button type="button" class="btn btn-login pe-3 ps-3 me-3" style="text-decoration: none">
+                                            Log In
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="d-inline-block">
+                                    <a href="{% url 'signupuser' %}">
+                                        <button type="button" class="btn btn-primary pe-3 ps-3" style="text-decoration: none">Sign up</button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 {% endblock header %}

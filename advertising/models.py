@@ -4,7 +4,7 @@ from django.db import models
 class CarouselAd(models.Model):
     image = models.ImageField(upload_to='advertising/carousel/db/images/')
     url = models.URLField(blank=True)
-    chapter = models.CharField(max_length=30)
+    chapter = models.CharField(max_length=35)
     title = models.CharField(max_length=28)
     status_choices = [
         ('ACTIVE', 'Active'),

@@ -7,46 +7,46 @@
                 <form action="{% url 'equities:equities_filters' %}" method="get" name="equity_filter">
                     <div class="row">
                         <div class="col-6">
-                            <span class="color-blue">Raised, %:</span>
+                            <span class="text-color-blue">Raised, %:</span>
                             <input class="text-small" type="text" name="raised" id="raised">
                             <label for="raised"></label>
                         </div>
                         <div class="col-6">
-                            <span class="color-blue">Score:</span>
+                            <span class="text-color-blue">Score:</span>
                             <input class="text-small" type="text" name="score" id="score">
                             <label for="score"></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <span class="color-blue">Days to go:</span>
+                            <span class="text-color-blue">Days to go:</span>
                             <input class="text-small" type="text" name="days_to_go" id="days_to_go">
                             <label for="days_to_go"></label>
                         </div>
                         <div class="col-6">
-                            <span class="color-blue">Min invest:</span>
+                            <span class="text-color-blue">Min invest:</span>
                             <input class="text-small" type="text" name="min_invest" id="min_invest">
                             <label for="min_invest"></label>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <span class="color-blue pb-2">Sector: </span><br>
+                        <span class="text-color-blue pb-2">Sector: </span><br>
                         <div class="col-12">
                             {% for sector in sectors %}
                                 <div class="form-check form-check-inline ms-2">
-                                    <input class="form-check-input" type="checkbox" name="sector" id="sector" value="{{ sector }}">
-                                    <label class="form-check-label" for="sector">{{ sector }}</label>
+                                    <input class="form-check-input" type="checkbox" name="sector" id="sector{{ sector }}" value="{{ sector }}">
+                                    <label class="form-check-label" for="sector{{ sector }}">{{ sector }}</label>
                                 </div>
                             {% endfor %}
                         </div>
                     </div>
                     <div class="row">
-                        <span class="color-blue pb-2">Currencies: </span>
+                        <span class="text-color-blue pb-2">Currencies: </span>
                         <div class="col-12">
                             {% for currency in currencies %}
-                                <div class="form-check form-check-inline ms-2">
-                                    <input class="form-check-input" type="checkbox" name="currency" id="currency" value="{{ currency }}">
-                                    <label class="form-check-label" for="currency">{{ currency }}</label>
+                                <div class="form-group form-check-inline ms-2">
+                                    <input class="form-check-input" type="checkbox" name="currency" id="currency{{ currency }}" value="{{ currency }}">
+                                    <label class="form-check-label" for="currency{{ currency }}">{{ currency }}</label>
                                 </div>
                             {% endfor %}
                         </div>

@@ -9,14 +9,14 @@
             <!-- Watchlist -->
             <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
                 <a href="{% url 'index' %}" style="text-decoration: none">
-                    <i class="bi bi-star color-yellow d-inline-block"></i>
+                    <i class="bi bi-star text-color-yellow d-inline-block"></i>
                     Watchlist
                 </a>
             </button>
             <!-- Portfolio -->
             <button type="button" class="btn btn-login" style="background-color: var(--app-light-grey)">
                 <a href="{% url 'index' %}" style="text-decoration: none">
-                    <i class="bi bi-briefcase color-yellow d-inline-block"></i>
+                    <i class="bi bi-briefcase text-color-yellow d-inline-block"></i>
                     Portfolio
                 </a>
             </button>
@@ -32,16 +32,16 @@
                     <i class="bi bi-chevron-down"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end text-center text-small" style="background-color: var(--app-light-grey); border: none">
-                    <a class="dropdown-item color-blue" href="?{% url_replace paginate_by=3 %}"> <span class="align-middle">3</span> </a>
-                    <a class="dropdown-item color-blue" href="?{% url_replace paginate_by=5 %}"> <span class="align-middle">5</span> </a>
-                    <a class="dropdown-item color-blue" href="?{% url_replace paginate_by=10 %}"> <span class="align-middle">10</span> </a>
-                    <a class="dropdown-item color-blue" href="?{% url_replace paginate_by=15 %}"> <span class="align-middle">15</span> </a>
+                    <a class="dropdown-item text-color-blue" href="?{% url_replace paginate_by=3 %}"> <span class="align-middle">3</span> </a>
+                    <a class="dropdown-item text-color-blue" href="?{% url_replace paginate_by=5 %}"> <span class="align-middle">5</span> </a>
+                    <a class="dropdown-item text-color-blue" href="?{% url_replace paginate_by=10 %}"> <span class="align-middle">10</span> </a>
+                    <a class="dropdown-item text-color-blue" href="?{% url_replace paginate_by=15 %}"> <span class="align-middle">15</span> </a>
                 </div>
             </div>
 
             <!-- Filters -->
             <a class="btn btn-login" style="background-color: var(--app-light-grey)" data-bs-toggle="collapse" href="#equitiesFilter" role="button" aria-expanded="false" aria-controls="equitiesFilter">
-                <i class="bi bi-filter color-yellow d-inline-block"></i>
+                <i class="bi bi-filter text-color-yellow d-inline-block"></i>
                 Filters
                 <i class="bi bi-chevron-down d-inline-block"></i>
             </a>
