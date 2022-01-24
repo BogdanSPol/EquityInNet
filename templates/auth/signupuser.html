@@ -1,22 +1,79 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+	<!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Investment opportunities' aggregator" name="description" />
+    <meta content="the10.team" name="the10.team" />
+
+	<!-- Page title -->
+	<title>Sign up | EquityInNet - online investment opportunities' aggregator</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+	<!-- Bootstrap CSS -->
+	<link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+	<link href="{% static 'libs/bootstrap-icons/bootstrap-icons.css' %}" id="bootstrap-icons-style" rel="stylesheet" type="text/css" />
+	<!-- App CSS -->
+	<link href="{% static 'css/app.css' %}" id="app-style" rel="stylesheet" type="text/css" />
 </head>
-<body>
 
-<h1>Sign Up</h1>
+<body style="background-color: var(--app-light-grey)">
+    <div class="card mx-auto" style="width: 30rem; margin-top: 10rem">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <span class="text-xlarge pb-3 text-rubik" id="signupuserLabel">Create an account</span>
+                <a href="{% url 'index' %}">
+                    <button type="button" class="btn bi-x-lg" style="text-decoration: none; outline: none"></button>
+                </a>
+            </div>
+            <div class="pb-3">Gain access to additional features such as Watchlist and Portfolio tracking. Already have an account? <a href="{% url 'loginuser' %}" role="button" class="text-color-blue" style="text-decoration: none">Log In</a> </div>
+            <form method="POST" id="signupuser">
+                {% csrf_token %}
+                <div class="pb-3">
+                     <label for="username" class="text-norm text-rubik pb-1">
+                         Username
+                     </label>
+                    <input type="text" class="btn-modal-field" id="username" name="username" placeholder="Enter your username here...">
+                </div>
+                <div class="pb-3">
+                    <label for="email" class="text-norm text-rubik pb-1">
+                        Email
+                    </label>
+                    <input type="text" class="btn-modal-field" id="email" name="email" placeholder="Enter your correct email here...">
+                </div>
+                <div class="pb-3">
+                    <label for="password1" class="text-norm text-rubik pb-1 d-flex justify-content-between">
+                        Password
+                    </label>
+                    <input type="password" class="btn-modal-field" id="password1" name="password1" placeholder="Enter your password here...">
+                </div>
+                <div class="pb-3">
+                    <label for="password2" class="text-norm text-rubik pb-1 d-flex justify-content-between">
+                        Repeat password
+                    </label>
+                    <input type="password" class="btn-modal-field" id="password2" name="password2" placeholder="Repeat your password here...">
+                </div>
+                <div class="text-color-red pt--3 pb-3">{{ error }}</div>
+                <div>
+                    <button class="btn btn-primary btn-modal-login">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<h2>{{ error }}</h2>
-
-<form method="POST">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">Sign UP</button>
-</form>
-
+	<!-- JavaScript -->
+	<script src="{% static 'libs/jquery/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'js/app.js' %}"></script>
 </body>
-</html>

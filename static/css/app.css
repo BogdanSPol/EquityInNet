@@ -17,6 +17,7 @@
   --text-small: 85%;
   --text-norm: 100%;
   --text-large: 125%;
+  --text-xlarge: 150%;
 
   /* Fonts */
   --app-main-text: 'Rubik', sans-serif;
@@ -32,13 +33,18 @@
 .text-color-light-green {font-size: inherit; color: var(--app-light-green)}
 .text-color-red {font-size: inherit; color: var(--app-red)}
 
-
 .text-xsmall {font-size: var(--text-xsmall)}
 .text-small {font-size: var(--text-small)}
 .text-norm {font-size: var(--text-norm)}
 .text-large  {font-size: var(--text-large)}
+.text-xlarge {font-size: var(--text-xlarge)}
 
 .text-bold {font-weight: bold}
+
+.text-rubik {
+  font-family: var(--app-main-text);
+  font-weight: 400;
+}
 
 
 .dropdown-menu {
@@ -50,6 +56,10 @@
 
 .padding-inherit {
   padding: inherit !important;
+}
+
+.pt--3 {
+  padding-top: -1rem;
 }
 
 .bi {
@@ -347,4 +357,66 @@ footer {
   font-family: var(--app-main-text);
   font-weight: 400;
   color: var(--app-dark-grey);
+}
+
+/* Log in */
+
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.app-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: var(--app-white);
+  background-clip: padding-box;
+  border: none;
+  border-radius: .25rem;
+  outline:0;
+  padding: 1rem 2rem;
+}
+
+.btn-modal-login {
+  width: 100%;
+  height: 50px;
+  font-size: var(--text-large) !important;
+  font-family: var(--app-title-text);
+  font-weight: 500;
+  color: var(--app-white);
+  background-color: var(--app-blue);
+  background-clip: padding-box;
+  border: 0;
+  border-radius: .25rem;
+}
+
+.btn-modal-field {
+  width: 100%;
+  height: 50px;
+  font-size: var(--text-norm) !important;
+  font-family: var(--app-title-text);
+  font-weight: 500;
+  background-clip: padding-box;
+  border: 1px solid var(--app-grey);
+  border-radius: .25rem;
+  outline: none;
 }
